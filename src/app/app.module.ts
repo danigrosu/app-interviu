@@ -9,12 +9,14 @@ import { AComponent } from './a/a.component';
 import { from } from 'rxjs';
 import { AService } from './a/a.service';
 import { EditComponent } from './a/edit/edit.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AComponent,
     EditComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
