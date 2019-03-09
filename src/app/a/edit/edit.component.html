@@ -14,15 +14,15 @@
       <input name="Description" type="text" class="form-control" [(ngModel)]="item.Description" required />
 
       <label>Active:</label>
-      <input name="Active" type="checkbox" class="" [(ngModel)]="item.Active" />
+      <input name="Active" type="checkbox" class="" [(ngModel)]="item.Active" [ngModelOptions]="{standalone: true}" />
 
       <hr />
 
       <ng-container *ngIf="componentState=='Edit'; else elseTemplate">
-        <button (click)="onEdit()" class="btn btn-success" [disabled]="!itemForm.form.valid">Save</button>
+        <button type="button" (click)="onEdit()" class="btn btn-success" [disabled]="!itemForm.form.valid">Save</button>
       </ng-container>
       <ng-template #elseTemplate>
-        <button (click)="onAdd(); itemForm.reset()" class="btn btn-success" [disabled]="!itemForm.form.valid">Add</button>        
+        <button type="button" (click)="onAdd(); itemForm.reset();" class="btn btn-success" [disabled]="!itemForm.form.valid">Add</button>        
       </ng-template>
       <a routerLink="/a/items" class="btn btn-warning">Close</a>
       
