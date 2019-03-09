@@ -1,3 +1,92 @@
-<p>
-  a works!
-</p>
+<div class="modal" #myModal>
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">View item</h4>
+        <button (click)="closeModal()" type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+        <table *ngIf="currentItem != null" class="table">
+          <tbody>
+            <tr>
+              <th>Code</th>
+              <td>{{currentItem.Code}}</td>
+            </tr>
+            <tr>
+              <th>Name</th>
+              <td>{{currentItem.Name}}</td>
+            </tr>
+            <tr>
+              <th>Description</th>
+              <td>{{currentItem.Description}}</td>
+            </tr>
+            <tr>
+              <th>Active</th>
+              <td>{{currentItem.Active == true ? "YES" : "NO"}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button (click)="closeModal()" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<div *ngIf="modalOpen" class="modal-backdrop show"></div>
+
+<div class="row">
+  <div class="col-md-9">
+    <div class="card">
+      <div class="card-header">
+        Comp A Content
+      </div>
+      <div class="card-body">
+
+        <a class="btn btn-primary" [routerLink]="['edit']">Add item</a>
+        <hr />
+
+        <table *ngIf="itemsList.length > 0; else elseTemplate" class="table table-stripped">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Active</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of itemsList; let i = index">
+              <td>{{item.Code}}</td>
+              <td>{{item.Name}}</td>
+              <td>{{item.Description}}</td>
+              <td>{{item.Active}}</td>
+              <td>
+                <a style="cursor: pointer;" class="text-primary" (click)="openModal(i)">View</a> | 
+                <a style="cursor: pointer;" class="text-warning" [routerLink]="['edit', item.Code]">Edit</a> | 
+                <a style="cursor: pointer;" class="text-danger" (click)="deleteItem(i)">Delete</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <ng-template #elseTemplate>
+            <p>No items to show...</p>       
+          </ng-template>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <router-outlet></router-outlet>
+  </div>
+</div>
