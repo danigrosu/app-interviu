@@ -1,8 +1,14 @@
 
 <div style="text-align:center">
-  <button routerLink="/a/items" class="btn btn-lg btn-primary">Comp A</button>
+
+  <button routerLink="/a/items" class="btn btn-lg btn-primary "
+    [ngClass]="{'active':activateA == true,'disabled':!activateA}">Comp A</button>
+
   <div class="buttons_divider"></div>
-  <button routerLink="/b" class="btn btn-lg btn-secondary">Comp B</button>
+
+  <button routerLink="/b" class="btn btn-lg btn-primary"
+    [ngClass]="{'active':activateB == true,'disabled':!activateB}">Comp B</button>
+    
 </div>
 
 <router-outlet></router-outlet>
