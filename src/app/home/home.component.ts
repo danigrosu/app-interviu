@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css',
-  '../app.component.css']
+  '../styles/shared.css']
 })
 export class HomeComponent implements OnInit {
 
