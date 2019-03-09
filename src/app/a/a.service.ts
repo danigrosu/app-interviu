@@ -35,7 +35,6 @@ export class AService implements OnInit {
   }
 
   editItem(code: string, newValue: Item) {
-    //this.itemsList[index] = new Item(newValue.Code, newValue.Name, newValue.Description, newValue.Active);
     const item = this.itemsList.find(
       (i) => {
         return i.Code === code;
