@@ -34,9 +34,9 @@ export class EditComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           if (params['id'] != null) {
+            this.itemId = params['id'];
             let svItem = this.aService.getItem(this.itemId);
             this.item = new Item(svItem.Code, svItem.Name, svItem.Description, svItem.Active);
-            this.itemId = params['id'];
           }
           else {
             this.componentState = "Add";
@@ -51,6 +51,7 @@ export class EditComponent implements OnInit {
         this.item.Name.trim(), 
         this.item.Description.trim(), 
         this.item.Active));
+    this.router.navigate(['/a', 'items']);
   }
 
   onAdd() {
